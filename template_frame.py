@@ -21,7 +21,7 @@ _ = gettext.gettext
 class MyFrame1 ( wx.Frame ):
 
     def __init__( self, parent ):
-        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 523,309 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
         self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
@@ -30,24 +30,32 @@ class MyFrame1 ( wx.Frame ):
 
         bSizer2 = wx.BoxSizer( wx.HORIZONTAL )
 
-        self.m_staticText2 = wx.StaticText( self, wx.ID_ANY, _(u"key word"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_staticText2.Wrap( -1 )
+        self.m_staticText1 = wx.StaticText( self, wx.ID_ANY, _(u"Min Price"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText1.Wrap( -1 )
 
-        bSizer2.Add( self.m_staticText2, 0, wx.ALL, 5 )
+        bSizer2.Add( self.m_staticText1, 0, wx.ALL, 5 )
 
         self.m_textCtrl1 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
         bSizer2.Add( self.m_textCtrl1, 0, wx.ALL, 5 )
 
-        self.m_button2 = wx.Button( self, wx.ID_ANY, _(u"Search"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer2.Add( self.m_button2, 0, wx.ALL, 5 )
+        self.m_staticText2 = wx.StaticText( self, wx.ID_ANY, _(u"Max Price"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText2.Wrap( -1 )
 
-        self.m_staticText4 = wx.StaticText( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_staticText4.Wrap( -1 )
+        bSizer2.Add( self.m_staticText2, 0, wx.ALL, 5 )
 
-        bSizer2.Add( self.m_staticText4, 0, wx.ALL, 5 )
+        self.m_textCtrl2 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer2.Add( self.m_textCtrl2, 0, wx.ALL, 5 )
+
+        self.m_button1 = wx.Button( self, wx.ID_ANY, _(u"Search"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer2.Add( self.m_button1, 0, wx.ALL, 5 )
 
 
         bSizer1.Add( bSizer2, 0, 0, 0 )
+
+        self.m_staticText3 = wx.StaticText( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText3.Wrap( -1 )
+
+        bSizer1.Add( self.m_staticText3, 0, wx.ALL, 5 )
 
         self.m_grid1 = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
@@ -80,7 +88,7 @@ class MyFrame1 ( wx.Frame ):
         self.Centre( wx.BOTH )
 
         # Connect Events
-        self.m_button2.Bind( wx.EVT_BUTTON, self.OnSearch )
+        self.m_button1.Bind( wx.EVT_BUTTON, self.OnSearch )
 
     def __del__( self ):
         pass
