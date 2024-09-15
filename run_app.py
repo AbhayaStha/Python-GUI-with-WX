@@ -57,6 +57,25 @@ class CalcFrame(MyFrame1):
         event.Skip()
         keyword = self.m_textCtrl1.GetValue()
         print(keyword)
+        ser_description = self.df["description"]
+        index = []
+        for description in ser_description:
+            # print(description)
+            if re.search(keyword, description):
+                index.append(True)
+            else:
+                index.append((False))
+
+        df_filtered = self.df[index]
+        self.m_grid1.ClearGrid()
+        self.table = DataTable(df_filtered)
+        self.m_grid1.SetTable(
+            self.table,
+            takeOwnership=True
+        )
+        self.m_grid1.AutoSize()
+        text = f"The number of rows: {len(df_filtered)}"
+        self.m_staticText4.SetLabelText(text)
     
 
 
