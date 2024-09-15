@@ -55,18 +55,12 @@ class CalcFrame(MyFrame1):
     # Overload your event function
     def OnSearch(self, event):
         event.Skip()
-        keyword = self.m_textCtrl1.GetValue()
-        print(keyword)
-        ser_description = self.df["description"]
-        index = []
-        for description in ser_description:
-            # print(description)
-            if re.search(keyword, description):
-                index.append(True)
-            else:
-                index.append((False))
-
-        df_filtered = self.df[index]
+        min = self.m_textCtrl1.GetValue()
+        max = self.m_textCtrl2.GetValue()
+        # print(min)
+        min_value = float(min)
+        max_value = float(max)
+        df_filtered = self.df[(self.df['price'] >= min_value) & (self.df['price'] <= max_value)]
         self.m_grid1.ClearGrid()
         self.table = DataTable(df_filtered)
         self.m_grid1.SetTable(
@@ -75,7 +69,7 @@ class CalcFrame(MyFrame1):
         )
         self.m_grid1.AutoSize()
         text = f"The number of rows: {len(df_filtered)}"
-        self.m_staticText4.SetLabelText(text)
+        self.m_staticText3.SetLabelText(text)
     
 
 
