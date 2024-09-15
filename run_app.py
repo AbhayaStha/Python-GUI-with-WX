@@ -44,12 +44,19 @@ class CalcFrame(MyFrame1):
         super().__init__(parent)
         self.df = pd.read_csv("./part_wine_reviews.csv")
         self.table = DataTable(self.df)
-        self.m_grid1.SetTable(self.table, takeOwnership=True)
+        self.m_grid1.SetTable(
+            self.table,
+            takeOwnership=True
+        )
         self.m_grid1.AutoSize()
         self.Show(True)
         self.Layout()
         
     # Overload your event function
+    def OnSearch(self, event):
+        event.Skip()
+        keyword = self.m_textCtrl1.GetValue()
+        print(keyword)
     
 
 
